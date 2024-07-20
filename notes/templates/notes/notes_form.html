@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST'>  {% csrf_token %}  <!--POST for sending information back to the server-->
+    {{ form.as_p }}  <!--allow a user to pass back the information we define on our endpoint: title and text. It takes care of rendering the form's fields, labels, and error messages if any. It also handles the display of widgets associated with each field, such as text input fields, checkboxes, and select boxes-->
+    <button type="submit" class="btn btn-primary my-5">submit</button>
+</form>
+{% if form.errors %}  <!--if form has errors--> 
+<div class="alert alert-danger my-5"> <!--alert-danger affichatelna itar 7mer fih ketba 7emra(* we only accept...) margin-top-bottom 48px-->
+    {{form.errors.title.as_text}} <!--hna error ta3na(* we only accept...) tetafficha nrml -->
+</div>
+{% endif %}
+<a href="{% url 'notes.list' %}" class="btn btn-secondary">Cancel</a>
+{% endblock %}

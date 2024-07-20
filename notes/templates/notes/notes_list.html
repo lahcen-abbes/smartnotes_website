@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+
+    {% block content %}   <!--this is the import ârt of the template-->
+    <h1 class="my-5">These are the notes: </h1>
+        <div class="row row-cols3 g-2"> <!-- row row-cols3 hiya mes2ola 3la les columns -->
+            {% for note in notes %}
+            <div class="col">
+                <div class="p-3 border">
+                    <a href="{% url 'notes.detail' pk=note.id %}" class="text-dark text-decoration-non">
+                        <h3>{{note.title}}</h3>
+                    </a>
+                    {{ note.text | truncatechars:10 }} <!--truncatechars:10 hadi ze3ma golnaleh 3tina ghi 10 khanat(characters) mel note.text w morahom ydir ...-->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% endblock %}

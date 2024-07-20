@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST'>{% csrf_token %}
+    {{form.as_p}} <!--as_p it's going to be rendered as p tags in the HTML. That's the only difference-->
+    <input type='submit' class="btn btn-secondary"/>
+</form>
+{% endblock %}
